@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+       <meta charset="utf-8"/>
+       <title>Adsim - Teste de JS</title>
+       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+       <link rel="stylesheet" href="styles/index.css">
+       <link rel="stylesheet" type="text/css" href="styles/font-awesome.css">
+   </head>
+   <body>
+    <div id = 'twitterFeed'></div>
+    <nav class="navbar navbar-static-top navbar-dark bg-inverse">
+      <a class="navbar-brand" href="#">Teste JavaScript</a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row panel">
+        <div id="app-waiting">
+          <center>
+            <span clas="col-md-2"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Carregando</span>
+          </center>
+        </div>
+        <table hidden="" id="app-table" class="table app-table table-bordered">
+          <tr>
+            <th class="col-md-3 app-th-left">Refrigerante</th>
+            <th class="col-md-2">Preço</th>
+            <th class="col-md-3">Quantidade</th>
+            <th class="col-md-2">Total</th>
+            <th class="app-th-right"></th>
+          </tr>
+          <tr hidden id="app-html-table-row-none">
+            <td>
+              <select id="app-select-soft-drinks" class="app-select-soft-drinks">
+                <option value="0">Selecione</option>             
+              </select>
+            </td>
+            <td><span id="app-html-table-row-price-none">--</span></td>
+            <td><span class="input-group-addon app-ammount-group"><i class="fa fa-minus app-button app-color-blue app-html-table-row-ammount-minus-none app-html-table-row-ammount-minus"></i><input class="app-text-ammount app-html-table-row-ammount-text app-html-table-row-ammount-text-none" type="tel" value="1"><i class="fa fa-plus app-button app-color-blue app-html-table-row-ammount-plus-none app-html-table-row-ammount-plus"></i></span></td>
+            <td><span id="app-html-table-row-total-none">--</span></td>
+            <td><i class="fa fa-times app-button app-color-red"></i></td>
+          </tr>
+          <tr hidden id="app-html-table-overall">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="app-strong">Total Geral</td>
+            <td><span id="app-text-overall-none">R$ 0.00</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <hr>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="script/app.js"></script>
+  </body>
+</html>
