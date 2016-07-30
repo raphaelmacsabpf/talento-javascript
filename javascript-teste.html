@@ -8,6 +8,7 @@
        <link rel="stylesheet" type="text/css" href="styles/font-awesome.css">
    </head>
    <body class="app-body">
+   <!--Navbar-->
     <nav class="navbar navbar-static-top navbar-dark bg-inverse app-navbar">
       <div class="col-md-1">
         <img class="app-logo" alt="Adsim" src="http://adsim.co/wp-content/uploads/2015/11/adsim_logo_branco_header.png">
@@ -24,6 +25,7 @@
         </li>
       </ul>
     </nav>
+    <!--Intro Jumbotron-->
     <div class="jumbotron app-jumbotron">
       <div class="container">
         <h1 class="display-3 app-text-style-special">Saudações Magestade!</h1>
@@ -31,6 +33,7 @@
         <p><a class="btn btn-primary btn-lg" href="#app-table" role="button">Vamos Lá &raquo;</a></p>
       </div>
     </div>
+    <!--Container-->
     <div class="container">
       <div class="row panel">
         <div id="app-waiting">
@@ -38,6 +41,7 @@
             <span clas="col-md-2"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Carregando</span>
           </center>
         </div>
+        <!--Table-->
         <table hidden="" id="app-table" class="table app-table table-bordered">
           <tr>
             <th class="col-md-4 app-th-left">Refrigerante</th>
@@ -46,6 +50,7 @@
             <th class="col-md-3">Total</th>
             <th class="col-md-1 app-th-right"></th>
           </tr>
+          <!--hidden row is only for cloning-->
           <tr hidden id="app-html-table-row-none">
             <td>
               <select id="app-select-soft-drinks" class="app-select-soft-drinks">
@@ -77,6 +82,7 @@
               <i class="fa fa-times app-button app-color-red app-html-table-row-remove app-color-red app-html-table-row-remove-none"></i>
             </td>
           </tr>
+          <!--hidden row is only for remake overall-->
           <tr hidden id="app-html-table-overall-none">
             <td>
               <button id="app-button-new-row-none" type="submit" class="btn btn-success">

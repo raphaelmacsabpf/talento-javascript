@@ -3,6 +3,7 @@ var G_apiData;
 var G_rowData = [];
 var G_rowCount = 0;
 var app = {
+	//All the functions will be placed here
 	main: function() {
 		app.retrieveApiData();
 		setTimeout(function() {
@@ -21,18 +22,22 @@ var app = {
 		G_apiData = JSON.parse(response);
 	},
 	buildTable: function() {
+		//Get select DOM Element
 		var select = $('#app-select-soft-drinks');
 		select.empty();
 		select.append('<option value="0">Selecione</option>');
 		var lenI = G_apiData.length;
+		//Loop for each brand
 		for(var i = 0; i < lenI; i++) {
 			select.append('<optgroup label="' + G_apiData[i].nome + '">');
 			var lenJ = G_apiData[i].refrigerantes.length;
+			//Loop for each soft drink
 			for(var j = 0; j < lenJ; j++) {
 				select.append('<option value="' + i + '-' + j + '">' + G_apiData[i].refrigerantes[j].nome + '</option>');
 			}
 			select.append('</optgroup>');
 		}
+		//Creating standard rows
 		for(var i = 0; i < 5; i++) {
 			app.appendNewRow(i);
 		}
@@ -43,8 +48,10 @@ var app = {
 		overall = overall.replace('<tr hidden="" id="app-html-table-overall-none','<tr id="app-html-table-overall');
 		overall = overall.replace('app-text-overall-none', 'app-text-overall-value');
 		overall = overall.replace('app-button-new-row-none', 'app-button-new-row-value');
+		//Remove previous overall div's
 		$("#app-html-table-overall").remove();
 		$("#app-table").append(overall);
+		//Rebuild all event listeners
 		$(".app-select-soft-drinks").off().on("change", function() {
 			var row = this.parentNode.parentNode.id;
 			row = row.split("-")[4];
@@ -140,6 +147,7 @@ var app = {
 }
 app.main();
 
+//Standard Functions will be placed here to facilitate call's
 function moneyString(value) {
 	value = value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 	var string = "R$ " + value;
