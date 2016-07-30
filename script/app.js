@@ -3,23 +3,23 @@ var G_apiData;
 var G_rowData = [];
 var G_rowCount = 0;
 var app = {
-	//All the functions will be placed here
+	//All the app functions will be placed here
 	main: function() {
-		app.retrieveApiData();
-		setTimeout(function() {
-			app.buildTable();
-			app.hideWatingContent();
-		}, 1500);
-		
+		app.retrieveApiData();		
 	},
 	hideWatingContent: function() {
 		$("#app-waiting").hide();
 		$("#app-table").show();
 	},
 	retrieveApiData: function() {
-		var response = '[{"nome":"Companhia Cervejaria Brahma","refrigerantes":[{"nome":"Guaraná Brahma","quantidade":"350ml","preco":2.5},{"nome":"Mirinda","quantidade":"350ml","preco":2.5},{"nome":"Sukita","quantidade":"350ml","preco":2.5},{"nome":"Limão Brahma","quantidade":"350ml","preco":2.5},{"nome":"Guaraná Brahma","quantidade":"2l","preco":4.88999999999999968025576890795491635799407958984375},{"nome":"Mirinda","quantidade":"2l","preco":4.88999999999999968025576890795491635799407958984375},{"nome":"Sukita","quantidade":"2l","preco":4.88999999999999968025576890795491635799407958984375},{"nome":"Limão Brahma","quantidade":"2l","preco":4.88999999999999968025576890795491635799407958984375}]},{"nome":"The Coca-Cola Company","refrigerantes":[{"nome":"Coca-Cola","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Coca-Cola Light","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Coca Zero","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Cherry Coke","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Diet Coke","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Fanta","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Sprite","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Minuano limão","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Taí","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Kuat","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Schweppes","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Guaraná Jesus","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Crush","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Kuat","quantidade":"350ml","preco":2.9900000000000002131628207280300557613372802734375},{"nome":"Coca-Cola","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Coca-Cola Light","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Coca Zero","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Cherry Coke","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Diet Coke","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Fanta","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Sprite","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Minuano limão","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Taí","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Kuat","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Schweppes","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Guaraná Jesus","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Crush","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375},{"nome":"Kuat","quantidade":"2l","preco":6.9900000000000002131628207280300557613372802734375}]},{"nome":"PepsiCo","refrigerantes":[{"nome":"Pepsi-Cola","quantidade":"350ml","preco":3.5},{"nome":"Gatorade","quantidade":"350ml","preco":3.5},{"nome":"Seven Up","quantidade":"350ml","preco":3.5},{"nome":"Pepsi-Cola","quantidade":"2l","preco":5.5},{"nome":"Seven Up","quantidade":"2l","preco":5.75}]}]';
-		
-		G_apiData = JSON.parse(response);
+		//Retrieve data from API via JSONP
+		$.getJSON("http://homolog.adsim.co:8080/refrigerantes", function(json) {
+		  	G_apiData = json;
+		  	//When API data is ready, the data will be processed
+		  	app.buildTable();
+			app.hideWatingContent();
+		});
+		//G_apiData = JSON.parse(response);
 	},
 	buildTable: function() {
 		//Get select DOM Element
@@ -89,7 +89,7 @@ var app = {
 	ammountSet: function(row, ammount) {
 		ammount = Math.floor(ammount);
 		G_rowData[row].ammount = ammount;
-		if(G_rowData[row].ammount < 0)
+		if(isNaN(G_rowData[row].ammount) || G_rowData[row].ammount < 0)
 			G_rowData[row].ammount = 0;
 		app.updateRow(row);
 	},
