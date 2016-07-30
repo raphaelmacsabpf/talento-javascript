@@ -76,7 +76,7 @@ var app = {
 	},
 	removeRow: function(rowId) {
 		G_rowData[rowId].inUse = false;
-		$("#app-html-table-row-" + rowId).fadeOut(300);
+		$("#app-html-table-row-" + rowId).fadeOut(200);
 		app.updateRow(rowId);
 	},
 	ammountSet: function(row, ammount) {
@@ -120,7 +120,7 @@ var app = {
 				overall += G_rowData[i].ammount * G_rowData[i].price;
 			}
 		}
-		$("#app-text-overall-value").html("R$ " + moneyString(overall));
+		$("#app-text-overall-value").html(moneyString(overall));
 	},
 	appendNewRow: function(rowId) {
 		G_rowCount++;
@@ -145,3 +145,18 @@ function moneyString(value) {
 	var string = "R$ " + value;
 	return string;
 }
+//For Smooth Scrolling
+$(function() {
+	$('a[href*="#"]:not([href="#"])').click(function() {
+	  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	    var target = $(this.hash);
+	    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	    if (target.length) {
+	      $('html, body').animate({
+	        scrollTop: target.offset().top
+	      }, 800);
+	      return false;
+	    }
+	  }
+	});
+});

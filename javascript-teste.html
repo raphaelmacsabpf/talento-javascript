@@ -7,27 +7,28 @@
        <link rel="stylesheet" href="styles/index.css">
        <link rel="stylesheet" type="text/css" href="styles/font-awesome.css">
    </head>
-   <body>
-    <div id = 'twitterFeed'></div>
-    <nav class="navbar navbar-static-top navbar-dark bg-inverse">
-      <a class="navbar-brand" href="#">Teste JavaScript</a>
+   <body class="app-body">
+    <nav class="navbar navbar-static-top navbar-dark bg-inverse app-navbar">
+      <div class="col-md-1">
+        <img class="app-logo" alt="Adsim" src="http://adsim.co/wp-content/uploads/2015/11/adsim_logo_branco_header.png">
+      </div>
       <ul class="nav navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="#">Refrigerantes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href="#">Contato</a>
         </li>
       </ul>
     </nav>
-    <div class="jumbotron">
+    <div class="jumbotron app-jumbotron">
       <div class="container">
-        <h1 class="display-3">Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <h1 class="display-3 app-text-style-special">Saudações Magestade!</h1>
+        <p class="app-text-style-white">Trago da muralha uma técnologia ainda desconhecida por todos. Se trata de um sistema para que vossa magestade possa desfrutar dos melhores drinks de Winterfell.</p>
+        <p><a class="btn btn-primary btn-lg" href="#app-table" role="button">Vamos Lá &raquo;</a></p>
       </div>
     </div>
     <div class="container">
@@ -39,11 +40,11 @@
         </div>
         <table hidden="" id="app-table" class="table app-table table-bordered">
           <tr>
-            <th class="col-md-3 app-th-left">Refrigerante</th>
+            <th class="col-md-4 app-th-left">Refrigerante</th>
             <th class="col-md-2">Preço</th>
-            <th class="col-md-3">Quantidade</th>
-            <th class="col-md-2">Total</th>
-            <th class="app-th-right"></th>
+            <th class="col-md-2">Quantidade</th>
+            <th class="col-md-3">Total</th>
+            <th class="col-md-1 app-th-right"></th>
           </tr>
           <tr hidden id="app-html-table-row-none">
             <td>
@@ -58,9 +59,13 @@
             </td>
             <td>
               <span class="input-group-addon app-ammount-group">
-                <i class="fa fa-minus app-button app-color-blue app-html-table-row-ammount-minus-none app-html-table-row-ammount-minus"></i>
+                <button type="submit" class="btn btn-primary app-bnt-change-ammount app-html-table-row-ammount-minus-none app-html-table-row-ammount-minus">
+                  <i class="fa fa-minus app-button fa-2x"></i>
+                </button>
                 <input class="app-text-ammount app-html-table-row-ammount-text app-html-table-row-ammount-text-none" type="tel" value="1">
-                <i class="fa fa-plus app-button app-color-blue app-html-table-row-ammount-plus-none app-html-table-row-ammount-plus"></i>
+                <button type="submit" class="btn btn-primary app-bnt-change-ammount app-html-table-row-ammount-plus-none app-html-table-row-ammount-plus">
+                  <i class="fa fa-plus app-button fa-2x"></i>
+                </button>
               </span>
             </td>
             <td>
@@ -80,13 +85,13 @@
             </button>
             </td>
             <td></td>
-            <td></td>
             <td class="app-strong">Total Geral</td>
             <td>
               <span id="app-text-overall-none">
                 R$ 0.00
               </span>
             </td>
+            <td></td>
           </tr>
         </table>
       </div>
