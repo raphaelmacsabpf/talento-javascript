@@ -45,32 +45,32 @@ var app = {
 		overall = overall.replace('app-button-new-row-none', 'app-button-new-row-value');
 		$("#app-html-table-overall").remove();
 		$("#app-table").append(overall);
-		$(".app-select-soft-drinks").on("change", function() {
+		$(".app-select-soft-drinks").off().on("change", function() {
 			var row = this.parentNode.parentNode.id;
 			row = row.split("-")[4];
 			app.onSelectSoftDrink(this.value, row);
 		});
-		$(".app-html-table-row-ammount-minus").on("click", function() {
+		$(".app-html-table-row-ammount-minus").off().on("click", function() {
 			var row = this.parentNode.parentNode.parentNode.id;
 			row = row.split("-")[4];
 			app.ammountDecrease(row);
 		});
-		$(".app-html-table-row-ammount-plus").on("click", function() {
+		$(".app-html-table-row-ammount-plus").off().on("click", function() {
 			var row = this.parentNode.parentNode.parentNode.id;
 			row = row.split("-")[4];
 			app.ammountIncrease(row);
 		});
-		$(".app-html-table-row-ammount-text").change(function() {
+		$(".app-html-table-row-ammount-text").off().change(function() {
 			var row = this.parentNode.parentNode.parentNode.id;
 			row = row.split("-")[4];
 			app.ammountSet(row, $(".app-html-table-row-ammount-text-" + row).val());
 		});
-		$(".app-html-table-row-remove").on("click", function() {
+		$(".app-html-table-row-remove").off().on("click", function() {
 			var row = this.parentNode.parentNode.id;
 			row = row.split("-")[4];
 			app.removeRow(row);
 		});
-		$("#app-button-new-row-value").on("click", function() {
+		$("#app-button-new-row-value").off().on("click", function() {
 			app.appendNewRow(G_rowCount);
 		});
 	},
