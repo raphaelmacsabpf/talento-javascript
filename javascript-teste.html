@@ -51,17 +51,42 @@
                 <option value="0">Selecione</option>             
               </select>
             </td>
-            <td><span id="app-html-table-row-price-none">--</span></td>
-            <td><span class="input-group-addon app-ammount-group"><i class="fa fa-minus app-button app-color-blue app-html-table-row-ammount-minus-none app-html-table-row-ammount-minus"></i><input class="app-text-ammount app-html-table-row-ammount-text app-html-table-row-ammount-text-none" type="tel" value="1"><i class="fa fa-plus app-button app-color-blue app-html-table-row-ammount-plus-none app-html-table-row-ammount-plus"></i></span></td>
-            <td><span id="app-html-table-row-total-none">--</span></td>
-            <td><i class="fa fa-times app-button app-color-red"></i></td>
+            <td>
+              <span id="app-html-table-row-price-none">
+                --
+              </span>
+            </td>
+            <td>
+              <span class="input-group-addon app-ammount-group">
+                <i class="fa fa-minus app-button app-color-blue app-html-table-row-ammount-minus-none app-html-table-row-ammount-minus"></i>
+                <input class="app-text-ammount app-html-table-row-ammount-text app-html-table-row-ammount-text-none" type="tel" value="1">
+                <i class="fa fa-plus app-button app-color-blue app-html-table-row-ammount-plus-none app-html-table-row-ammount-plus"></i>
+              </span>
+            </td>
+            <td>
+              <span id="app-html-table-row-total-none">
+                --
+              </span>
+            </td>
+            <td>
+              <i class="fa fa-times app-button app-color-red app-html-table-row-remove app-color-red app-html-table-row-remove-none"></i>
+            </td>
           </tr>
-          <tr hidden id="app-html-table-overall">
-            <td></td>
+          <tr hidden id="app-html-table-overall-none">
+            <td>
+              <button id="app-button-new-row-none" type="submit" class="btn btn-success">
+                <i class="fa fa-plus"></i>
+                Novo Item
+            </button>
+            </td>
             <td></td>
             <td></td>
             <td class="app-strong">Total Geral</td>
-            <td><span id="app-text-overall-none">R$ 0.00</span></td>
+            <td>
+              <span id="app-text-overall-none">
+                R$ 0.00
+              </span>
+            </td>
           </tr>
         </table>
       </div>

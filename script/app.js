@@ -36,9 +36,14 @@ var app = {
 		for(var i = 0; i < 5; i++) {
 			app.appendNewRow(i);
 		}
-		var overall = $("#app-html-table-overall")[0].outerHTML;
-		overall = overall.replace('<tr hidden="" id="app-html-table-overall','<tr id="app-html-table-overall');
+		app.rebuildOverall();
+	},
+	rebuildOverall: function() {
+		var overall = $("#app-html-table-overall-none")[0].outerHTML;
+		overall = overall.replace('<tr hidden="" id="app-html-table-overall-none','<tr id="app-html-table-overall');
 		overall = overall.replace('app-text-overall-none', 'app-text-overall-value');
+		overall = overall.replace('app-button-new-row-none', 'app-button-new-row-value');
+		$("#app-html-table-overall").remove();
 		$("#app-table").append(overall);
 		$(".app-select-soft-drinks").on("change", function() {
 			var row = this.parentNode.parentNode.id;
@@ -51,7 +56,7 @@ var app = {
 			app.ammountDecrease(row);
 		});
 		$(".app-html-table-row-ammount-plus").on("click", function() {
-			var row = this.parentNode.parentNode.parentNode.id;;
+			var row = this.parentNode.parentNode.parentNode.id;
 			row = row.split("-")[4];
 			app.ammountIncrease(row);
 		});
@@ -60,6 +65,19 @@ var app = {
 			row = row.split("-")[4];
 			app.ammountSet(row, $(".app-html-table-row-ammount-text-" + row).val());
 		});
+		$(".app-html-table-row-remove").on("click", function() {
+			var row = this.parentNode.parentNode.id;
+			row = row.split("-")[4];
+			app.removeRow(row);
+		});
+		$("#app-button-new-row-value").on("click", function() {
+			app.appendNewRow(G_rowCount);
+		});
+	},
+	removeRow: function(rowId) {
+		G_rowData[rowId].inUse = false;
+		$("#app-html-table-row-" + rowId).fadeOut(300);
+		app.updateRow(rowId);
 	},
 	ammountSet: function(row, ammount) {
 		ammount = Math.floor(ammount);
@@ -115,7 +133,9 @@ var app = {
 		divStr = divStr.replace('app-html-table-row-ammount-plus-none', 'app-html-table-row-ammount-plus-' + rowId);
 		divStr = divStr.replace('app-html-table-row-ammount-text-none', 'app-html-table-row-ammount-text-' + rowId)
 		divStr = divStr.replace('app-html-table-row-total-none', 'app-html-table-row-total-' + rowId);
+		divStr = divStr.replace('app-html-table-row-remove-none', 'app-html-table-row-remove-' + rowId);
 		$("#app-table").append(divStr);
+		app.rebuildOverall();
 	}
 }
 app.main();
