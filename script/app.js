@@ -46,6 +46,7 @@ var app = {
 	rebuildOverall: function() {
 		var overall = $("#app-html-table-overall-none")[0].outerHTML;
 		overall = overall.replace('<tr hidden="" id="app-html-table-overall-none','<tr id="app-html-table-overall');
+		overall = overall.replace('<tr id="app-html-table-overall-none" hidden="">','<tr id="app-html-table-overall">');
 		overall = overall.replace('app-text-overall-none', 'app-text-overall-value');
 		overall = overall.replace('app-button-new-row-none', 'app-button-new-row-value');
 		//Remove previous overall div's
@@ -135,6 +136,7 @@ var app = {
 		G_rowData.push(aux);
 		var divStr = $("#app-html-table-row-none")[0].outerHTML;
 		divStr = divStr.replace('<tr hidden="" id="app-html-table-row-none', '<tr id="app-html-table-row-' + rowId + '">');
+		divStr = divStr.replace('<tr id="app-html-table-row-none" hidden="">' , '<tr id="app-html-table-row-' + rowId + '">');
 		divStr = divStr.replace('app-html-table-row-price-none', 'app-html-table-row-price-' + rowId);
 		divStr = divStr.replace('app-html-table-row-ammount-minus-none', 'app-html-table-row-ammount-minus-' + rowId);
 		divStr = divStr.replace('app-html-table-row-ammount-plus-none', 'app-html-table-row-ammount-plus-' + rowId);
